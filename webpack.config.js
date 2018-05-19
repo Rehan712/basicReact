@@ -61,12 +61,12 @@ module.exports = {
 		]
 	},
 
-	// watch: true,
+	watch: true,
 
 	devtool: 'source-map',
-	devServer: {
-		contentBase: './dist',
-		historyApiFallback: true
-	},
+	// devServer: {
+	// 	contentBase: './dist',
+	// 	historyApiFallback: true
+	// },
 	resolve: { extensions: ['.js', '.jsx'] }
 };
