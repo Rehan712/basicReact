@@ -1,0 +1,30 @@
+.menu{
+	height:60px;
+	display:flex;
+	justify-content:flex-end;
+	align-items:center;
+	background-color:grey;
+	.brand{
+		font-family:Roboto;
+		font-size:25px;
+		font-weight:bold;
+		margin-right:auto;
+		margin-left:30px;
+	}
+	.burger-lines{
+		width:30px;
+		height:25px;
+		//background-color:black;
+		display:flex;
+		flex-direction:column;
+		justify-content:space-between;
+		margin-right:10px;
+		cursor:pointer;
+		.line{
+			width:25px;
+			height:3px;
+			background-color:white;
+			margin:auto;
+		}
+	}
+}

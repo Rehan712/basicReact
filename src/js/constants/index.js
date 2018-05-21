@@ -11,3 +11,6 @@ export const SUBMIT_DATA_FAIL = 'SUBMIT_DATA_FAIL';
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const RESET_STATE = 'RESET_STATE';
+
+export const CHANGE_WIDTH='CHANGE_WIDTH';
+export const RESET_WIDTH='RESET_WIDTH'

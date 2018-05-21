@@ -25,7 +25,10 @@ const data = [
 		if(userArray.length){
 			const user=userArray[0];
 			if(user){
-				const token=jwt.sign({name:user.name},'secret')
+				const payload={name:user.name};
+				const token=jwt.sign(payload,require('../passport/jwtOptions').secretOrKey,{
+					expiresIn:60 * 60
+				});
 				res.status(201).send({name:user.name,token})
 			}
 		}

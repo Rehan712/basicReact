@@ -71,3 +71,16 @@ export function resetState() {
 		type: types.RESET_STATE
 	};
 }
+
+export function changeWidth(className) {
+	return {
+		type:types.CHANGE_WIDTH,
+		payload:className
+	}
+}
+
+export function resetWidth() {
+	return {
+		type:types.RESET_WIDTH
+	}
+}

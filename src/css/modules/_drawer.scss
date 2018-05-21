@@ -1,0 +1,30 @@
+.drawer{
+	display:flex;
+	width:0px;
+	height:calc(100vh - 60px);
+	background-color:red;
+	transition:1s ease-in-out;
+	.circle{
+		width:70px;
+		height:70px;
+		border-radius:100%;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+		background-color:blue;
+		cursor:pointer;
+		.arrow{
+			width:30px;
+			height:30px;
+			transform:rotate(135deg);
+			border:2px solid white;
+			border-left:0;
+			border-top:0;
+			margin:auto;
+		}
+	}
+}
+
+.changeWidth{
+	width:250px;
+}
