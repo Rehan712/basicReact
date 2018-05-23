@@ -4100,6 +4100,15 @@ exports.changePassword = changePassword;
 exports.resetState = resetState;
 exports.changeWidth = changeWidth;
 exports.resetWidth = resetWidth;
+exports.changeStudentName = changeStudentName;
+exports.changeStudentFatherName = changeStudentFatherName;
+exports.changeStudentAge = changeStudentAge;
+exports.changeStudentAdress = changeStudentAdress;
+exports.submitStudentData = submitStudentData;
+exports.submitStudentDataAttempt = submitStudentDataAttempt;
+exports.submitStudentDataSuccess = submitStudentDataSuccess;
+exports.submitStudentDataFail = submitStudentDataFail;
+exports.resetStudentState = resetStudentState;
 
 var _constants = __webpack_require__(98);
 
@@ -4189,6 +4198,63 @@ function changeWidth(className) {
 function resetWidth() {
 	return {
 		type: types.RESET_WIDTH
+	};
+}
+
+function changeStudentName(value) {
+	return {
+		type: types.CHANGE_STUDENT_NAME,
+		payload: value
+	};
+}
+function changeStudentFatherName(value) {
+	return {
+		type: types.CHANGE_STUDENT_FATHER_NAME,
+		payload: value
+	};
+}
+function changeStudentAge(value) {
+	return {
+		type: types.CHANGE_STUDENT_AGE,
+		payload: value
+	};
+}
+function changeStudentAdress(value) {
+	return {
+		type: types.CHANGE_STUDENT_ADRESS,
+		payload: value
+	};
+}
+
+function submitStudentData(data) {
+	return {
+		type: types.SUBMIT_STUDENT_DATA,
+		payload: data
+	};
+}
+
+function submitStudentDataAttempt() {
+	return {
+		type: types.SUBMIT_STUDENT_DATA_ATTEMPT
+	};
+}
+
+function submitStudentDataSuccess() {
+	return {
+		type: types.SUBMIT_STUDENT_DATA_SUCCESS
+	};
+}
+
+function submitStudentDataFail(error) {
+	return {
+		type: types.SUBMIT_STUDENT_DATA_FAIL,
+		payload: error
+	};
+}
+
+function resetStudentState() {
+	return {
+		type: types.RESET_STUDENT_STATE
 	};
 }
 
@@ -4711,6 +4777,17 @@ var RESET_STATE = exports.RESET_STATE = 'RESET_STATE';
 
 var CHANGE_WIDTH = exports.CHANGE_WIDTH = 'CHANGE_WIDTH';
 var RESET_WIDTH = exports.RESET_WIDTH = 'RESET_WIDTH';
+
+var CHANGE_STUDENT_NAME = exports.CHANGE_STUDENT_NAME = 'CHANGE_STUDENT_NAME';
+var CHANGE_STUDENT_FATHER_NAME = exports.CHANGE_STUDENT_FATHER_NAME = 'CHANGE_STUDENT_FATHER_NAME';
+var CHANGE_STUDENT_AGE = exports.CHANGE_STUDENT_AGE = 'CHANGE_STUDENT_AGE';
+var CHANGE_STUDENT_ADRESS = exports.CHANGE_STUDENT_ADRESS = 'CHANGE_STUDENT_ADRESS';
+
+var SUBMIT_STUDENT_DATA = exports.SUBMIT_STUDENT_DATA = 'SUBMIT_STUDENT_DATA';
+var SUBMIT_STUDENT_DATA_ATTEMPT = exports.SUBMIT_STUDENT_DATA_ATTEMPT = 'SUBMIT_STUDENT_DATA_ATTEMPT';
+var SUBMIT_STUDENT_DATA_SUCCESS = exports.SUBMIT_STUDENT_DATA_SUCCESS = 'SUBMIT_STUDENT_DATA_SUCCESS';
+var SUBMIT_STUDENT_DATA_FAIL = exports.SUBMIT_STUDENT_DATA_FAIL = 'SUBMIT_STUDENT_DATA_FAIL';
+var RESET_STUDENT_STATE = exports.RESET_STUDENT_STATE = 'RESET_STUDENT_STATE';
 
 /***/ }),
 /* 99 */
@@ -16690,6 +16767,8 @@ var submitDataApi = exports.submitDataApi = function () {
 	};
 }();
 
+exports.submitStudentDataApi = submitStudentDataApi;
+
 var _axios = __webpack_require__(794);
 
 var _axios2 = _interopRequireDefault(_axios);
@@ -16697,6 +16776,10 @@ var _axios2 = _interopRequireDefault(_axios);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function submitStudentDataApi(data) {
+	console.log('this is data from submitStudentDataApi', data);
+}
 
 /***/ }),
 /* 319 */
@@ -42832,6 +42915,10 @@ var _Drawer = __webpack_require__(791);
 
 var _Drawer2 = _interopRequireDefault(_Drawer);
 
+var _SignIn = __webpack_require__(823);
+
+var _SignIn2 = _interopRequireDefault(_SignIn);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42846,28 +42933,10 @@ var App = function (_React$Component) {
 	function App() {
 		_classCallCheck(this, App);
 
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-		_this.state = {
-			open: true
-		};
-
-		_this.handleDrawerOpen = _this.handleDrawerOpen.bind(_this);
-		_this.handleDrawerClose = _this.handleDrawerClose.bind(_this);
-		return _this;
+		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
 	}
 
 	_createClass(App, [{
-		key: 'handleDrawerOpen',
-		value: function handleDrawerOpen() {
-			this.setState({ open: true });
-		}
-	}, {
-		key: 'handleDrawerClose',
-		value: function handleDrawerClose() {
-			this.setState({ open: false });
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -42889,7 +42958,8 @@ var App = function (_React$Component) {
 								null,
 								_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
 								_react2.default.createElement(_reactRouterDom.Route, { path: '/loginStudent', component: _Login2.default }),
-								_react2.default.createElement(_reactRouterDom.Route, { path: '/students', component: _Students2.default })
+								_react2.default.createElement(_reactRouterDom.Route, { path: '/students', component: _Students2.default }),
+								_react2.default.createElement(_reactRouterDom.Route, { path: '/signIn', component: _SignIn2.default })
 							)
 						)
 					)
@@ -59886,6 +59956,10 @@ var _submitDataSaga = __webpack_require__(813);
 
 var _submitDataSaga2 = _interopRequireDefault(_submitDataSaga);
 
+var _submitStudentDataSaga = __webpack_require__(825);
+
+var _submitStudentDataSaga2 = _interopRequireDefault(_submitStudentDataSaga);
+
 var _constants = __webpack_require__(98);
 
 var types = _interopRequireWildcard(_constants);
@@ -59896,7 +59970,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(watchGetData),
     _marked2 = /*#__PURE__*/regeneratorRuntime.mark(watchSubmitData),
-    _marked3 = /*#__PURE__*/regeneratorRuntime.mark(rootSaga);
+    _marked3 = /*#__PURE__*/regeneratorRuntime.mark(watchSubmitStudentData),
+    _marked4 = /*#__PURE__*/regeneratorRuntime.mark(rootSaga);
 
 function watchGetData() {
 	return regeneratorRuntime.wrap(function watchGetData$(_context) {
@@ -59930,13 +60005,13 @@ function watchSubmitData() {
 	}, _marked2, this);
 }
 
-function rootSaga() {
-	return regeneratorRuntime.wrap(function rootSaga$(_context3) {
+function watchSubmitStudentData() {
+	return regeneratorRuntime.wrap(function watchSubmitStudentData$(_context3) {
 		while (1) {
 			switch (_context3.prev = _context3.next) {
 				case 0:
 					_context3.next = 2;
-					return (0, _effects.all)([(0, _effects.fork)(watchGetData), (0, _effects.fork)(watchSubmitData)]);
+					return (0, _effects.takeLatest)(types.SUBMIT_STUDENT_DATA, _submitStudentDataSaga2.default);
 
 				case 2:
 				case 'end':
@@ -59944,6 +60019,22 @@ function rootSaga() {
 			}
 		}
 	}, _marked3, this);
+}
+
+function rootSaga() {
+	return regeneratorRuntime.wrap(function rootSaga$(_context4) {
+		while (1) {
+			switch (_context4.prev = _context4.next) {
+				case 0:
+					_context4.next = 2;
+					return (0, _effects.all)([(0, _effects.fork)(watchGetData), (0, _effects.fork)(watchSubmitData), (0, _effects.fork)(watchSubmitStudentData)]);
+
+				case 2:
+				case 'end':
+					return _context4.stop();
+			}
+		}
+	}, _marked4, this);
 }
 
 /***/ }),
@@ -60987,12 +61078,17 @@ var _changeClassReducer = __webpack_require__(817);
 
 var _changeClassReducer2 = _interopRequireDefault(_changeClassReducer);
 
+var _studentFormReducer = __webpack_require__(824);
+
+var _studentFormReducer2 = _interopRequireDefault(_studentFormReducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
 	studentData: _getDataReducer2.default,
 	inputData: _textFieldsReducer2.default,
-	changeClass: _changeClassReducer2.default
+	changeClass: _changeClassReducer2.default,
+	inputStudentData: _studentFormReducer2.default
 });
 
 exports.default = rootReducer;
@@ -61181,7 +61277,7 @@ exports = module.exports = __webpack_require__(820)(false);
 
 
 // module
-exports.push([module.i, ".app {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  flex-wrap: nowrap; }\n  .app .menu {\n    height: 60px;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n    background-color: grey; }\n    .app .menu .brand {\n      font-family: Roboto;\n      font-size: 25px;\n      font-weight: bold;\n      margin-right: auto;\n      margin-left: 30px; }\n    .app .menu .burger-lines {\n      width: 30px;\n      height: 25px;\n      display: flex;\n      flex-direction: column;\n      justify-content: space-between;\n      margin-right: 10px;\n      cursor: pointer; }\n      .app .menu .burger-lines .line {\n        width: 25px;\n        height: 3px;\n        background-color: white;\n        margin: auto; }\n  .app .content {\n    display: flex;\n    justify-content: flex-start; }\n    .app .content .drawer {\n      display: flex;\n      width: 0px;\n      background-color: #9AC9B0;\n      transition: 0.5s ease-in-out;\n      align-items: center;\n      flex-direction: column;\n      opacity: 0.9; }\n      .app .content .drawer .circle {\n        width: 70px;\n        height: 70px;\n        border-radius: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        cursor: pointer;\n        transition: 1s ease-in-out;\n        align-self: flex-end; }\n        .app .content .drawer .circle .arrow {\n          width: 20px;\n          height: 20px;\n          transform: rotate(135deg);\n          border: 5px solid white;\n          border-left: 0;\n          border-top: 0;\n          margin: auto; }\n      .app .content .drawer .items {\n        width: 250px;\n        display: flex;\n        aign-self: flex-start;\n        justify-content: center;\n        align-items: center;\n        flex-direction: column;\n        transition: 0.5s ease-in-out; }\n        .app .content .drawer .items .item {\n          width: 250px;\n          border-bottom: 2px solid white;\n          display: flex;\n          justify-content: center;\n          transition: 0.5s ease-in; }\n          .app .content .drawer .items .item p {\n            font-size: 25px;\n            color: red;\n            text-decoration: none;\n            transition: 0.5s ease-in-out; }\n    .app .content .changeWidth {\n      width: 250px;\n      height: calc(100vh - 60px); }\n    .app .content .contentComponents {\n      display: flex; }\n\nbody {\n  font-family: Roboto; }\n", ""]);
+exports.push([module.i, ".app {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  flex-wrap: nowrap; }\n  .app .menu {\n    height: 60px;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n    background-color: grey; }\n    .app .menu .brand {\n      font-family: Roboto;\n      font-size: 25px;\n      font-weight: bold;\n      margin-right: auto;\n      margin-left: 30px; }\n    .app .menu .burger-lines {\n      width: 30px;\n      height: 25px;\n      display: flex;\n      flex-direction: column;\n      justify-content: space-between;\n      margin-right: 10px;\n      cursor: pointer; }\n      .app .menu .burger-lines .line {\n        width: 25px;\n        height: 3px;\n        background-color: white;\n        margin: auto; }\n  .app .content {\n    display: flex;\n    justify-content: flex-start; }\n    .app .content .drawer {\n      display: flex;\n      width: 0px;\n      height: calc(100vh - 60px);\n      background-color: #9AC9B0;\n      transition: 0.5s ease-in-out;\n      align-items: center;\n      flex-direction: column;\n      opacity: 0.9; }\n      .app .content .drawer .circle {\n        width: 70px;\n        height: 70px;\n        border-radius: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        cursor: pointer;\n        transition: 1s ease-in-out;\n        align-self: flex-end; }\n        .app .content .drawer .circle .arrow {\n          width: 20px;\n          height: 20px;\n          transform: rotate(135deg);\n          border: 5px solid white;\n          border-left: 0;\n          border-top: 0;\n          margin: auto; }\n      .app .content .drawer .items {\n        width: 250px;\n        display: flex;\n        aign-self: flex-start;\n        justify-content: center;\n        align-items: center;\n        flex-direction: column;\n        transition: 0.5s ease-in-out; }\n        .app .content .drawer .items .item {\n          width: 250px;\n          border-bottom: 2px solid white;\n          display: flex;\n          justify-content: center;\n          transition: 0.5s ease-in; }\n          .app .content .drawer .items .item p {\n            font-size: 25px;\n            color: red;\n            text-decoration: none;\n            transition: 0.5s ease-in-out; }\n    .app .content .changeWidth {\n      width: 250px;\n      height: calc(100vh - 60px); }\n    .app .content .contentComponents {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      heigth: calc(100vh - 60px);\n      margin: auto; }\n      .app .content .contentComponents .signIn {\n        display: flex;\n        border: 2px solid orange;\n        flex-wrap: wrap;\n        height: 400px;\n        width: 1000px; }\n        .app .content .contentComponents .signIn .textbox {\n          flex-basis: 300px;\n          margin-left: 50px;\n          border: 1px soid red;\n          margin-top: 50px; }\n\nbody {\n  font-family: Roboto; }\n", ""]);
 
 // exports
 
@@ -61748,6 +61844,222 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
+
+/***/ }),
+/* 823 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(95);
+
+var _actions = __webpack_require__(87);
+
+var actions = _interopRequireWildcard(_actions);
+
+var _TextField = __webpack_require__(595);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Button = __webpack_require__(779);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignIn = function (_React$Component) {
+	_inherits(SignIn, _React$Component);
+
+	function SignIn() {
+		_classCallCheck(this, SignIn);
+
+		return _possibleConstructorReturn(this, (SignIn.__proto__ || Object.getPrototypeOf(SignIn)).apply(this, arguments));
+	}
+
+	_createClass(SignIn, [{
+		key: 'render',
+		value: function render() {
+			var _props = this.props,
+			    changeStudentName = _props.changeStudentName,
+			    changeStudentFatherName = _props.changeStudentFatherName,
+			    changeStudentAge = _props.changeStudentAge,
+			    changeStudentAdress = _props.changeStudentAdress,
+			    inputStudentData = _props.inputStudentData,
+			    submitStudentData = _props.submitStudentData,
+			    resetStudentState = _props.resetStudentState;
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'signIn' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'heading' },
+					'Student'
+				),
+				_react2.default.createElement(_TextField2.default, { value: inputStudentData.name, type: 'search', className: 'textbox', label: 'Name', onChange: function onChange(e) {
+						return changeStudentName(e.target.value);
+					} }),
+				_react2.default.createElement(_TextField2.default, { value: inputStudentData.fatherName, type: 'search', className: 'textbox', label: 'Father Name', onChange: function onChange(e) {
+						return changeStudentFatherName(e.target.value);
+					} }),
+				_react2.default.createElement(_TextField2.default, { value: inputStudentData.age, type: 'search', className: 'textbox', label: 'Age', onChange: function onChange(e) {
+						return changeStudentAge(e.target.value);
+					} }),
+				_react2.default.createElement(_TextField2.default, { value: inputStudentData.adress, type: 'multiline', className: 'textbox', label: 'Address', onChange: function onChange(e) {
+						return changeStudentAdress(e.target.value);
+					} }),
+				_react2.default.createElement(
+					_Button2.default,
+					{ onClick: function onClick() {
+							submitStudentData(inputStudentData);resetStudentState();
+						}, color: 'primary', style: { width: 200 } },
+					'Submit'
+				)
+			);
+		}
+	}]);
+
+	return SignIn;
+}(_react2.default.Component);
+
+function mapStateToProps(state) {
+	return {
+		inputStudentData: state.inputStudentData
+	};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { submitStudentData: actions.submitStudentData, changeStudentName: actions.changeStudentName, changeStudentFatherName: actions.changeStudentFatherName, changeStudentAge: actions.changeStudentAge, changeStudentAdress: actions.changeStudentAdress, resetStudentState: actions.resetStudentState })(SignIn);
+
+/***/ }),
+/* 824 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = studentFormReducer;
+
+var _constants = __webpack_require__(98);
+
+var types = _interopRequireWildcard(_constants);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var initial = {
+	name: '',
+	fatherName: '',
+	age: '',
+	adress: ''
+};
+
+function studentFormReducer() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initial;
+	var action = arguments[1];
+
+	switch (action.type) {
+		case types.CHANGE_STUDENT_NAME:
+			return _extends({}, state, { name: action.payload });
+		case types.CHANGE_STUDENT_FATHER_NAME:
+			return _extends({}, state, { fatherName: action.payload });
+		case types.CHANGE_STUDENT_AGE:
+			return _extends({}, state, { age: action.payload });
+		case types.CHANGE_STUDENT_ADRESS:
+			return _extends({}, state, { adress: action.payload });
+		case types.RESET_STUDENT_STATE:
+			return initial;
+		default:
+			return state;
+	}
+}
+
+/***/ }),
+/* 825 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = submitStudentDataSaga;
+
+var _effects = __webpack_require__(123);
+
+var _api = __webpack_require__(318);
+
+var api = _interopRequireWildcard(_api);
+
+var _actions = __webpack_require__(87);
+
+var actions = _interopRequireWildcard(_actions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var _marked = /*#__PURE__*/regeneratorRuntime.mark(submitStudentDataSaga);
+
+function submitStudentDataSaga(action) {
+	var inputData, res;
+	return regeneratorRuntime.wrap(function submitStudentDataSaga$(_context) {
+		while (1) {
+			switch (_context.prev = _context.next) {
+				case 0:
+					inputData = action.payload;
+					_context.next = 3;
+					return (0, _effects.put)(actions.submitStudentDataAttempt());
+
+				case 3:
+					_context.prev = 3;
+					_context.next = 6;
+					return (0, _effects.call)(api.submitStudentDataApi, inputData);
+
+				case 6:
+					res = _context.sent;
+					_context.next = 9;
+					return (0, _effects.put)(actions.submitStudentDataSuccess());
+
+				case 9:
+					_context.next = 15;
+					break;
+
+				case 11:
+					_context.prev = 11;
+					_context.t0 = _context['catch'](3);
+					_context.next = 15;
+					return (0, _effects.put)(actions.submitStudentDataFail(_context.t0));
+
+				case 15:
+				case 'end':
+					return _context.stop();
+			}
+		}
+	}, _marked, this, [[3, 11]]);
+}
 
 /***/ })
 /******/ ]);

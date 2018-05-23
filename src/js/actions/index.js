@@ -52,6 +52,10 @@ export function submitDataFail(error) {
 	};
 }
 
+
+
+
+
 export function changeName(value) {
 	return {
 		type: types.CHANGE_NAME,
@@ -72,6 +76,11 @@ export function resetState() {
 	};
 }
 
+
+
+
+
+
 export function changeWidth(className) {
 	return {
 		type:types.CHANGE_WIDTH,
@@ -83,4 +92,72 @@ export function resetWidth() {
 	return {
 		type:types.RESET_WIDTH
 	}
+}
+
+
+
+
+export function changeStudentName(value) {
+	return {
+		type:types.CHANGE_STUDENT_NAME,
+		payload:value
+	}
+}
+export function changeStudentFatherName(value) {
+	return {
+		type:types.CHANGE_STUDENT_FATHER_NAME,
+		payload:value
+	}
+}
+export function changeStudentAge(value) {
+	return {
+		type:types.CHANGE_STUDENT_AGE,
+		payload:value
+	}
+}
+export function changeStudentAdress(value) {
+	return {
+		type:types.CHANGE_STUDENT_ADRESS,
+		payload:value
+	}
+}
+
+
+
+
+
+
+
+export function submitStudentData(data) {
+	return {
+		type: types.SUBMIT_STUDENT_DATA,
+		payload: data
+	};
+}
+
+export function submitStudentDataAttempt() {
+	return {
+		type: types.SUBMIT_STUDENT_DATA_ATTEMPT
+	};
+}
+
+export function submitStudentDataSuccess() {
+	return {
+		type: types.SUBMIT_STUDENT_DATA_SUCCESS
+	};
+}
+
+export function submitStudentDataFail(error) {
+	return {
+		type: types.SUBMIT_STUDENT_DATA_FAIL,
+		payload: error
+	};
+}
+
+
+
+export function resetStudentState() {
+	return {
+		type: types.RESET_STUDENT_STATE
+	};
 }

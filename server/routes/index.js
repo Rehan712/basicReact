@@ -10,4 +10,7 @@ module.exports=app=>{
 	app.get('/students',(req,res)=>{
 		res.sendFile(require('path').join(__dirname,'../../dist/index.html'))
 	})
+	app.get('/signIn',(req,res)=>{
+		res.sendFile(require('path').join(__dirname,'../../dist/index.html'))
+	})
 }

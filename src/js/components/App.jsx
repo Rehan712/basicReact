@@ -4,30 +4,13 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Students from './Students';
 import Login from './Login';
 import Menu from './Menu';
-import Home from './Home'
-import Drawer from './Drawer'
+import Home from './Home';
+import Drawer from './Drawer';
+import SignIn from './SignIn';
 
 
 class App extends React.Component {
-	constructor() {
-		super();
-
-		this.state={
-			open:true
-		}
-
-		this.handleDrawerOpen=this.handleDrawerOpen.bind(this);
-		this.handleDrawerClose=this.handleDrawerClose.bind(this)
-	}
-
-	handleDrawerOpen(){
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose(){
-    this.setState({ open: false });
-  };
-
+	
 	render() {
 		return (
 			<Router>
@@ -40,12 +23,10 @@ class App extends React.Component {
 					<Route exact path='/' component={Home} />
 					<Route path='/loginStudent' component={Login} />
 					<Route path='/students' component={Students} />
+					<Route path='/signIn' component={SignIn} />
 				</Switch>
 				</div>
 				</div>
-
-				
-
 			</div>
 			</Router>
 		);

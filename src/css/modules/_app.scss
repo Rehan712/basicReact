@@ -12,6 +12,11 @@
 		@import './drawer';
 		.contentComponents{
 			display:flex;
+			justify-content:center;
+			align-items:center;
+			heigth:calc(100vh - 60px);
+			margin:auto;
+			@import './signIn';
 		}
 	}
 }
