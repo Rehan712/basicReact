@@ -1,0 +1,17 @@
+.app{
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	flex-wrap:nowrap;
+	@import './menu';
+	.content{
+		display:flex;
+		// width:900px;
+		//heigth:500px;
+		justify-content:flex-start;
+		@import './drawer';
+		.contentComponents{
+			display:flex;
+		}
+	}
+}

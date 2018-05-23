@@ -1,9 +1,13 @@
 .drawer{
 	display:flex;
 	width:0px;
-	height:calc(100vh - 60px);
-	background-color:red;
-	transition:1s ease-in-out;
+	// height:calc(100vh - 60px);
+	background-color:#9AC9B0;
+	transition:0.5s ease-in-out;
+	// justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	opacity:0.9;
 	.circle{
 		width:70px;
 		height:70px;
@@ -11,20 +15,46 @@
 		display:flex;
 		align-items:center;
 		justify-content:center;
-		background-color:blue;
+		// background-color:blue;
 		cursor:pointer;
+		transition:1s ease-in-out;
+		align-self:flex-end;
 		.arrow{
-			width:30px;
-			height:30px;
+			width:20px;
+			height:20px;
 			transform:rotate(135deg);
-			border:2px solid white;
+			border:5px solid white;
 			border-left:0;
 			border-top:0;
 			margin:auto;
+		}
+	}
+	.items{
+		width:250px;
+		display:flex;
+		aign-self:flex-start;
+		justify-content:center;
+		align-items:center;
+		flex-direction:column;
+		transition:0.5s ease-in-out;
+		.item{
+			width:250px;
+			border-bottom:2px solid white;
+			display:flex;
+			justify-content:center;
+			transition:0.5s ease-in;
+			p{
+				font-size:25px;
+				color:red;
+				text-decoration:none;
+				transition:0.5s ease-in-out;
+			}
+
 		}
 	}
 }
 
 .changeWidth{
 	width:250px;
+	height:calc(100vh - 60px);
 }

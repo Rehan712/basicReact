@@ -4,4 +4,10 @@ module.exports=app=>{
 		require('../handlers/getDataHandler')
 	);
 	app.post('/login',require('../handlers/postDataHandler'));
+	app.get('/loginStudent',(req,res)=>{
+		res.sendFile(require('path').join(__dirname,'../../dist/index.html'))
+	})
+	app.get('/students',(req,res)=>{
+		res.sendFile(require('path').join(__dirname,'../../dist/index.html'))
+	})
 }
